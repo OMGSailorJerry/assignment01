@@ -12,21 +12,18 @@ let appData = {
     savings: false
 };
 
-for (let i = 0; i < 2; i++) {
-    let eT = prompt('Введите обязательную статью расходов в этом месяце');
-    let eV = prompt('Во сколько обойдется?');
+// for (let i = 0; i < 2; i++) {
+//     let eT = prompt('Введите обязательную статью расходов в этом месяце');
+//     let eV = prompt('Во сколько обойдется?');
 
-    if ( (typeof(eT)) === 'string' && (typeof(eT)) !== null && (typeof(eV)) !== null 
-    && eT !== '' && eV !== '' && eT.length < 50) {
-        console.log('Done!');
-        appData.expenses[eT] = eV;
-    } else {
-        eT = prompt('Введите обязательную статью расходов в этом месяце');
-        eV = prompt('Во сколько обойдется?');
-        appData.expenses[eT] = eV;
-        console.log('Done!');
-    }
-}
+//     if ( (typeof(eT)) === 'string' && (typeof(eT)) !== null && (typeof(eV)) !== null 
+//     && eT !== '' && eV !== '' && eT.length < 50) {
+//         console.log('Done!');
+//         appData.expenses[eT] = eV;
+//     } else {
+//         i--;
+//     }
+// }
 
 
 // While -----------------------------------------------------------------------
@@ -41,36 +38,26 @@ for (let i = 0; i < 2; i++) {
 //     && eT !== '' && eV !== '' && eT.length < 50) {
 //         console.log('Done!');
 //         appData.expenses[eT] = eV;
-//     } else {
-//         eT = prompt('Введите обязательную статью расходов в этом месяце');
-//         eV = prompt('Во сколько обойдется?');
-//         appData.expenses[eT] = eV;
-//         console.log('Done!');
+//         i++;
 //     }
-//     i++;
 // }
 
 // Do while --------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-// let i = 0;
+let i = 0;
 
-// do {
-//     let eT = prompt('Введите обязательную статью расходов в этом месяце');
-//     let eV = prompt('Во сколько обойдется?');
+do {
+    let eT = prompt('Введите обязательную статью расходов в этом месяце');
+    let eV = prompt('Во сколько обойдется?');
 
-//     if ( (typeof(eT)) === 'string' && (typeof(eT)) !== null && (typeof(eV)) !== null 
-//     && eT !== '' && eV !== '' && eT.length < 50) {
-//         console.log('Done!');
-//         appData.expenses[eT] = eV;
-//     } else {
-//         eT = prompt('Введите обязательную статью расходов в этом месяце');
-//         eV = prompt('Во сколько обойдется?');
-//         appData.expenses[eT] = eV;
-//         console.log('Done!');
-//     }
-//     i++;
-// }
-// while (i < 2);
+    if ( (typeof(eT)) === 'string' && (typeof(eT)) !== null && (typeof(eV)) !== null 
+    && eT !== '' && eV !== '' && eT.length < 50) {
+        console.log('Done!');
+        appData.expenses[eT] = eV;
+        i++;
+    }
+}
+while (i < 2);
 
 appData.moneyPerDay = appData.budget / 30;
 
