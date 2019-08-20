@@ -11,7 +11,7 @@ function start () {
     }
 };
 
-// start();
+start();
 
 let appData = {
     budget: money,
