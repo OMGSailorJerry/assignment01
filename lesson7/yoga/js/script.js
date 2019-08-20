@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function() {
     infoHeader.addEventListener('click', function(e) {
         let target = e.target;
         if (target && target.classList.contains('info-header-tab')) {
-            for (let i = 0; i < tab.length; i++) {
+            for (let i = 0; i < tabs.length; i++) {
                 if (target === tabs[i]) {
                     hideTabContent(0);
                     showTabContent(i);
@@ -77,4 +77,34 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     setClock('timer', deadline);
+
+    // Modal window
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close'),
+        info = document.querySelector('.info'),
+        descriptionBtn;
+
+    function showModal() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function hideModal() {
+        overlay.style.display = 'none';
+        if (more.classList.contains('more-splash')) more.classList.remove('more-splash');
+        if (descriptionBtn.classList.contains('more-splash')) descriptionBtn.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    }
+
+    info.addEventListener('click', function(e){
+        if (e.target.classList.contains('description-btn')) {
+            descriptionBtn = e.target;
+            showModal.call(descriptionBtn);
+        }
+    });
+
+    more.addEventListener('click', showModal);
+    close.addEventListener('click', hideModal);
 });
