@@ -5,27 +5,27 @@ window.addEventListener('DOMContentLoaded', function() {
         infoHeader = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
     
-    function hideTabContent(a) {
+    let hideTabContent = (a) => {
         for (let i = a; i < tabContent.length; i++) {
             tabContent[i].classList.remove('show');
             tabContent[i].classList.add('hide');
         }
-    }
+    };
 
     hideTabContent(1);
 
-    function showTabContent(index) {
+    let showTabContent = (index) => {
         if (tabContent[index].classList.contains('hide')) {
             tabContent[index].classList.remove('hide');
             tabContent[index].classList.add('show');
         }
-    }
+    };
 
     infoHeader.addEventListener('click', function(e) {
         let target = e.target;
         if (target && target.classList.contains('info-header-tab')) {
-            for (let i = 0; i < tabs.length; i++) {
-                if (target === tabs[i]) {
+            for (let [i, tab] of tabs.entries()) {
+                if (target === tab) {
                     hideTabContent(0);
                     showTabContent(i);
                     break;
@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     let deadline = '2019-08-22';
 
-    function getTimeRemaining(endtime) {
+    let getTimeRemaining = (endtime) => {
         let t = Date.parse(endtime) - Date.parse(new Date()),
             seconds = Math.floor((t / 1000) % 60),
             minutes = Math.floor((t / 1000 / 60) % 60),
@@ -48,19 +48,16 @@ window.addEventListener('DOMContentLoaded', function() {
             'minutes': minutes,
             'seconds': seconds
         };
-    }
+    };
 
-    function setClock(id, endtime) {
+    let setClock = (id, endtime) => {
         
         let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
-            seconds = timer.querySelector('.seconds'),
-            timeInterval = setInterval(updateClock, 1000);
+            seconds = timer.querySelector('.seconds');
         
-        updateClock();
-        
-        function updateClock() {
+        let updateClock = () => {
             let t = getTimeRemaining(endtime);
 
             hours.textContent = t.hours;
@@ -73,8 +70,11 @@ window.addEventListener('DOMContentLoaded', function() {
                 minutes.textContent = '00';
                 seconds.textContent = '00';
             }
-        }
-    }
+        };
+
+        updateClock();
+        let timeInterval = setInterval(updateClock, 1000);
+    };
 
     setClock('timer', deadline);
 
@@ -85,18 +85,18 @@ window.addEventListener('DOMContentLoaded', function() {
         info = document.querySelector('.info'),
         descriptionBtn;
 
-    function showModal() {
+    let showModal = () => {
         overlay.style.display = 'block';
         this.classList.add('more-splash');
         document.body.style.overflow = 'hidden';
-    }
+    };
 
-    function hideModal() {
+    let hideModal = () => {
         overlay.style.display = 'none';
         if (more.classList.contains('more-splash')) more.classList.remove('more-splash');
         if (descriptionBtn.classList.contains('more-splash')) descriptionBtn.classList.remove('more-splash');
         document.body.style.overflow = '';
-    }
+    };
 
     info.addEventListener('click', function(e){
         if (e.target.classList.contains('description-btn')) {
